@@ -1,7 +1,7 @@
 {
   "name": "create-listening-server",
   "description": "Promise-based API to create listening `http.Server` instances.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "cjs/index.js",
   "types": "cjs/index.d.ts",
   "scripts": {
