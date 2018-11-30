@@ -1,0 +1,41 @@
+{
+  "name": "create-listening-server",
+  "description": "Promise-based API to create listening `http.Server` instances.",
+  "version": "0.1.0",
+  "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
+  "scripts": {
+    "clean": "rimraf ./cjs",
+    "prebuild": "yarn clean",
+    "build": "tsc -p src --outDir cjs --module commonjs",
+    "lint": "run-p lint:src lint:test",
+    "lint:src": "tslint -p src",
+    "lint:test": "tslint -p test",
+    "pretest": "yarn lint",
+    "test": "mocha -r @ts-tools/node \"test/**/*.spec.ts\" --watch-extensions ts",
+    "prepack": "yarn build"
+  },
+  "devDependencies": {
+    "@ts-tools/node": "^0.7.2",
+    "@types/chai": "^4.1.7",
+    "@types/chai-as-promised": "^7.1.0",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "8",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^5.2.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.11.0",
+    "typescript": "~3.2.1"
+  },
+  "files": [
+    "cjs",
+    "src"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "license": "MIT",
+  "repository": "git@github.com:AviVahl/create-listening-server.git"
+}
