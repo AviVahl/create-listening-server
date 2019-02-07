@@ -31,7 +31,8 @@
   },
   "files": [
     "cjs",
-    "src"
+    "src",
+    "!src/tsconfig.json"
   ],
   "engines": {
     "node": ">=8"
