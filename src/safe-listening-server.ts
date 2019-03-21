@@ -1,5 +1,5 @@
-import { Server, IncomingMessage, ServerResponse } from 'http'
-import { createListeningHttpServer } from './create-listening-server'
+import { Server, IncomingMessage, ServerResponse } from 'http';
+import { createListeningHttpServer } from './create-listening-server';
 
 /**
  * Safe creation of a listening `http.Server` instance. Tries using `preferredPort`,
@@ -16,21 +16,21 @@ export async function safeListeningHttpServer(
     requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
     usedPortRetries = 100
 ): Promise<{ httpServer: Server, port: number }> {
-    const lastPort = preferredPort + usedPortRetries
+    const lastPort = preferredPort + usedPortRetries;
 
-    let port = preferredPort
+    let port = preferredPort;
     do {
         try {
-            const httpServer = await createListeningHttpServer(port, requestListener)
-            return { httpServer, port }
+            const httpServer = await createListeningHttpServer(port, requestListener);
+            return { httpServer, port };
         } catch (e) {
             if (!isUsedPortError(e)) {
-                throw e
+                throw e;
             }
         }
-    } while (++port <= lastPort)
+    } while (++port <= lastPort);
 
-    throw new Error(`HTTP server could not start a listening on ports ${preferredPort}-${lastPort}`)
+    throw new Error(`HTTP server could not start a listening on ports ${preferredPort}-${lastPort}`);
 }
 
-const isUsedPortError = (e: any): e is Error => e && e.code === 'EADDRINUSE'
+const isUsedPortError = (e: any): e is Error => e && e.code === 'EADDRINUSE';
