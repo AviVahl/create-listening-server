@@ -15,7 +15,7 @@ export async function safeListeningHttpServer(
     preferredPort: number,
     requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
     usedPortRetries = 100
-): Promise<{ httpServer: Server, port: number }> {
+): Promise<{ httpServer: Server; port: number }> {
     const lastPort = preferredPort + usedPortRetries;
 
     let port = preferredPort;
@@ -33,4 +33,4 @@ export async function safeListeningHttpServer(
     throw new Error(`HTTP server could not start a listening on ports ${preferredPort}-${lastPort}`);
 }
 
-const isUsedPortError = (e: any): e is Error => e && e.code === 'EADDRINUSE';
+const isUsedPortError = (e: unknown): e is Error => e && (e as {code: string}).code === 'EADDRINUSE';
