@@ -1,5 +1,5 @@
 # create-listening-server
-[![Build Status](https://github.com/AviVahl/create-listening-server/workflows/CI/badge.svg)](https://github.com/AviVahl/create-listening-server/actions)
+[![Build Status](https://github.com/AviVahl/create-listening-server/workflows/tests/badge.svg)](https://github.com/AviVahl/create-listening-server/actions)
 [![npm version](https://badge.fury.io/js/create-listening-server.svg)](https://www.npmjs.com/package/create-listening-server)
 
 Promise-based API to create listening `http.Server` instances.
