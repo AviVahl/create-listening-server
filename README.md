@@ -11,7 +11,7 @@ when "address in use" errors occur. Useful for tests and development mode.
 
 Install the library in an existing project:
 ```
-yarn add create-listening-server
+npm i create-listening-server
 ```
 
 ## Example usage
