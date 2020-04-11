@@ -12,25 +12,25 @@ import { createListeningHttpServer } from './create-listening-server';
  * @returns the http server with the actual port it ended up picking
  */
 export async function safeListeningHttpServer(
-    preferredPort: number,
-    requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
-    usedPortRetries = 100
+  preferredPort: number,
+  requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
+  usedPortRetries = 100
 ): Promise<{ httpServer: Server; port: number }> {
-    const lastPort = preferredPort + usedPortRetries;
+  const lastPort = preferredPort + usedPortRetries;
 
-    let port = preferredPort;
-    do {
-        try {
-            const httpServer = await createListeningHttpServer(port, requestListener);
-            return { httpServer, port };
-        } catch (e) {
-            if (!isUsedPortError(e)) {
-                throw e;
-            }
-        }
-    } while (++port <= lastPort);
+  let port = preferredPort;
+  do {
+    try {
+      const httpServer = await createListeningHttpServer(port, requestListener);
+      return { httpServer, port };
+    } catch (e) {
+      if (!isUsedPortError(e)) {
+        throw e;
+      }
+    }
+  } while (++port <= lastPort);
 
-    throw new Error(`HTTP server could not start a listening on ports ${preferredPort}-${lastPort}`);
+  throw new Error(`HTTP server could not start a listening on ports ${preferredPort}-${lastPort}`);
 }
 
-const isUsedPortError = (e: unknown): e is Error => e && (e as {code: string}).code === 'EADDRINUSE';
+const isUsedPortError = (e: unknown): e is Error => e && (e as { code: string }).code === 'EADDRINUSE';

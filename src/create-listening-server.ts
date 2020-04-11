@@ -8,16 +8,16 @@ import { Server, IncomingMessage, ServerResponse, createServer } from 'http';
  * @param requestListener optional request listener. can also be added later with `httpServer.on('request', cb)`
  */
 export async function createListeningHttpServer(
-    port: number,
-    requestListener?: (request: IncomingMessage, response: ServerResponse) => void
+  port: number,
+  requestListener?: (request: IncomingMessage, response: ServerResponse) => void
 ): Promise<Server> {
-    return new Promise<Server>((resolve, reject) => {
-        const httpServer = createServer(requestListener);
-        httpServer.listen(port);
-        httpServer.once('listening', () => {
-            httpServer.removeListener('error', reject);
-            resolve(httpServer);
-        });
-        httpServer.once('error', reject);
+  return new Promise<Server>((resolve, reject) => {
+    const httpServer = createServer(requestListener);
+    httpServer.listen(port);
+    httpServer.once('listening', () => {
+      httpServer.removeListener('error', reject);
+      resolve(httpServer);
     });
+    httpServer.once('error', reject);
+  });
 }
