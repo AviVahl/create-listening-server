@@ -42,8 +42,15 @@
     "singleQuote": true
   },
   "mocha": {
-    "require": ["@ts-tools/node/r"],
-    "extension": ["js", "json", "ts", "tsx"]
+    "require": [
+      "@ts-tools/node/r"
+    ],
+    "extension": [
+      "js",
+      "json",
+      "ts",
+      "tsx"
+    ]
   },
   "license": "MIT",
   "repository": "git@github.com:AviVahl/create-listening-server.git"
