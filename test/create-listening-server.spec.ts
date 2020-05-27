@@ -21,7 +21,7 @@ describe('createListeningHttpServer', () => {
     runningServers.push(httpServer);
 
     expect(httpServer).to.be.instanceOf(Server);
-    expect(httpServer.address().port).to.equal(TEST_PORT);
+    expect((httpServer.address() as import('net').AddressInfo).port).to.equal(TEST_PORT);
     expect(httpServer.listening).to.equal(true);
   });
 
