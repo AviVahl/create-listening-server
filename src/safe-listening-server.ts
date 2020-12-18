@@ -33,4 +33,4 @@ export async function safeListeningHttpServer(
   throw new Error(`HTTP server could not start a listening on ports ${preferredPort}-${lastPort}`);
 }
 
-const isUsedPortError = (e: unknown): e is Error => e && (e as { code: string }).code === 'EADDRINUSE';
+const isUsedPortError = (e: unknown): e is Error => !!e && (e as { code: string }).code === 'EADDRINUSE';
