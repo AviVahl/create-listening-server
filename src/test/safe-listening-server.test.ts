@@ -1,17 +1,19 @@
 import { describe, it, afterEach } from "node:test";
 import { equal, ok, rejects } from "node:assert/strict";
 import { Server } from "node:http";
+import { once } from "node:events";
 import { safeListeningHttpServer } from "../safe-listening-server.js";
 import { createListeningHttpServer } from "../create-listening-server.js";
 
-const TEST_PORT = 3000;
+const TEST_PORT = 8080;
 
 describe("safeListeningHttpServer", { concurrency: 1 }, () => {
   const runningServers: Server[] = [];
 
   afterEach(async () => {
     for (const server of runningServers) {
-      await new Promise((res) => server.close(res));
+      server.close();
+      await once(server, "close");
     }
     runningServers.length = 0;
   });
