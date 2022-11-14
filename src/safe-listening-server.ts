@@ -1,5 +1,5 @@
 import type { Server, IncomingMessage, ServerResponse } from "node:http";
-import { createListeningHttpServer } from "./create-listening-server";
+import { createListeningHttpServer } from "./create-listening-server.js";
 
 /**
  * Safe creation of a listening `http.Server` instance. Tries using `preferredPort`,
