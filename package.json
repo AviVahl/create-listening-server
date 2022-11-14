@@ -2,55 +2,32 @@
   "name": "create-listening-server",
   "description": "Promise-based API to create listening `http.Server` instances.",
   "version": "1.0.0",
-  "main": "cjs/index.js",
-  "types": "cjs/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./cjs",
+    "clean": "rimraf ./dist",
     "prebuild": "npm run clean",
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "pretest": "npm run typecheck && npm run lint",
-    "test": "mocha",
+    "pretest": "npm run lint && npm run build",
+    "test": "node --test --enable-source-maps",
     "prepack": "npm run build"
   },
   "devDependencies": {
-    "@ts-tools/node": "^4.0.0",
-    "@types/chai": "^4.3.4",
-    "@types/chai-as-promised": "^7.1.5",
-    "@types/mocha": "^10.0.0",
-    "@types/node": "14",
+    "@types/node": "18",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
-    "chai": "^4.3.7",
-    "chai-as-promised": "^7.1.1",
     "eslint": "^8.27.0",
-    "mocha": "^10.1.0",
-    "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "typescript": "~4.8.4"
   },
   "files": [
-    "cjs",
-    "src"
+    "dist",
+    "src",
+    "!*/test"
   ],
   "engines": {
     "node": ">=14"
-  },
-  "prettier": {
-    "printWidth": 120,
-    "singleQuote": true
-  },
-  "mocha": {
-    "require": [
-      "@ts-tools/node/r"
-    ],
-    "extension": [
-      "js",
-      "json",
-      "ts",
-      "tsx"
-    ]
   },
   "license": "MIT",
   "repository": "git@github.com:AviVahl/create-listening-server.git"

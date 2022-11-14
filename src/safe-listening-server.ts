@@ -1,5 +1,5 @@
-import { Server, IncomingMessage, ServerResponse } from 'http';
-import { createListeningHttpServer } from './create-listening-server';
+import type { Server, IncomingMessage, ServerResponse } from "node:http";
+import { createListeningHttpServer } from "./create-listening-server";
 
 /**
  * Safe creation of a listening `http.Server` instance. Tries using `preferredPort`,
@@ -33,4 +33,4 @@ export async function safeListeningHttpServer(
   throw new Error(`HTTP server could not start a listening on ports ${preferredPort}-${lastPort}`);
 }
 
-const isUsedPortError = (e: unknown): e is Error => !!e && (e as { code: string }).code === 'EADDRINUSE';
+const isUsedPortError = (e: unknown): e is Error => !!e && (e as { code: string }).code === "EADDRINUSE";

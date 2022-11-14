@@ -1,5 +1,5 @@
-import { Server, IncomingMessage, ServerResponse, createServer } from 'http';
-import { once } from 'events';
+import { Server, IncomingMessage, ServerResponse, createServer } from "node:http";
+import { once } from "node:events";
 
 /**
  * Creates a listening `http.Server` instance using a specific `port`.
@@ -14,6 +14,6 @@ export async function createListeningHttpServer(
 ): Promise<Server> {
   const httpServer = createServer(requestListener);
   httpServer.listen(port);
-  await once(httpServer, 'listening');
+  await once(httpServer, "listening");
   return httpServer;
 }

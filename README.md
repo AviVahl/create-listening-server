@@ -21,8 +21,8 @@ npm i create-listening-server
 Creation of an `http.Server` with a specific port:
 
 ```ts
-import { createListeningHttpServer } from 'create-listening-server';
-import express from 'express';
+import { createListeningHttpServer } from "create-listening-server";
+import express from "express";
 
 const PORT = 3000;
 
@@ -37,8 +37,8 @@ async function main() {
 Creation of an `http.Server` with automated consecutive ports retries:
 
 ```ts
-import { safeListeningHttpServer } from 'create-listening-server';
-import express from 'express';
+import { safeListeningHttpServer } from "create-listening-server";
+import express from "express";
 
 const PREFERRED_PORT = 3000;
 
