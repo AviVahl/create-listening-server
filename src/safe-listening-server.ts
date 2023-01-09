@@ -22,7 +22,9 @@ export async function safeListeningHttpServer(
   do {
     try {
       const httpServer = await createListeningHttpServer(port, requestListener);
-      return { httpServer, port };
+      const address = httpServer.address();
+      const actualPort = typeof address === "object" && address !== null ? address.port : port;
+      return { httpServer, port: actualPort };
     } catch (e) {
       if (!isUsedPortError(e)) {
         throw e;
