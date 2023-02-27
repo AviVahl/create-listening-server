@@ -8,20 +8,22 @@ import { createListeningHttpServer } from "./create-listening-server.js";
  * @param preferredPort the initial port to try listening to
  * @param requestListener optional request listener. can also be added later with `httpServer.on('request', cb)`
  * @param usedPortRetries number of consecutive ports to retry. @default 100
+ * @param hostname optional host to pass to .listen()
  *
  * @returns the http server with the actual port it ended up picking
  */
 export async function safeListeningHttpServer(
   preferredPort: number,
   requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
-  usedPortRetries = 100
+  usedPortRetries = 100,
+  hostname?: string | undefined
 ): Promise<{ httpServer: Server; port: number }> {
   const lastPort = preferredPort + usedPortRetries;
 
   let port = preferredPort;
   do {
     try {
-      const httpServer = await createListeningHttpServer(port, requestListener);
+      const httpServer = await createListeningHttpServer(port, requestListener, hostname);
       const address = httpServer.address();
       const actualPort = typeof address === "object" && address !== null ? address.port : port;
       return { httpServer, port: actualPort };
