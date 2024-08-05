@@ -8,16 +8,16 @@
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "lint": "eslint .",
+    "lint": "eslint",
     "pretest": "npm run lint && npm run build",
     "test": "node --test --enable-source-maps",
     "prepack": "npm run build"
   },
   "devDependencies": {
     "@types/node": "18",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "eslint": "^8.57.0",
-    "typescript": "~5.5.4"
+    "eslint": "^9.8.0",
+    "typescript": "~5.5.4",
+    "typescript-eslint": "^8.0.1"
   },
   "files": [
     "dist",
