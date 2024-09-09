@@ -16,7 +16,7 @@ export async function safeListeningHttpServer(
   preferredPort: number,
   requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
   usedPortRetries = 100,
-  hostname?: string | undefined
+  hostname?: string
 ): Promise<{ httpServer: Server; port: number }> {
   const lastPort = preferredPort + usedPortRetries;
 
