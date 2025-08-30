@@ -1,5 +1,5 @@
 import type { Server, IncomingMessage, ServerResponse } from "node:http";
-import { createListeningHttpServer } from "./create-listening-server.js";
+import { createListeningHttpServer } from "./create-listening-server.ts";
 
 /**
  * Safe creation of a listening `http.Server` instance. Tries using `preferredPort`,
@@ -16,7 +16,7 @@ export async function safeListeningHttpServer(
   preferredPort: number,
   requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
   usedPortRetries = 100,
-  hostname?: string
+  hostname?: string,
 ): Promise<{ httpServer: Server; port: number }> {
   const lastPort = preferredPort + usedPortRetries;
 

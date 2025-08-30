@@ -2,7 +2,7 @@ import { describe, it, afterEach } from "node:test";
 import { equal, ok, rejects } from "node:assert/strict";
 import { Server } from "node:http";
 import { once } from "node:events";
-import { createListeningHttpServer } from "../create-listening-server.js";
+import { createListeningHttpServer } from "../create-listening-server.ts";
 
 const TEST_PORT = 3000;
 

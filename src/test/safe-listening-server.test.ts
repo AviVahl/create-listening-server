@@ -2,8 +2,8 @@ import { describe, it, afterEach } from "node:test";
 import { equal, ok, rejects } from "node:assert/strict";
 import { Server } from "node:http";
 import { once } from "node:events";
-import { safeListeningHttpServer } from "../safe-listening-server.js";
-import { createListeningHttpServer } from "../create-listening-server.js";
+import { safeListeningHttpServer } from "../safe-listening-server.ts";
+import { createListeningHttpServer } from "../create-listening-server.ts";
 
 const TEST_PORT = 8080;
 
@@ -44,12 +44,12 @@ describe("safeListeningHttpServer", { concurrency: 1 }, () => {
     runningServers.push(
       await createListeningHttpServer(TEST_PORT),
       await createListeningHttpServer(TEST_PORT + 1),
-      await createListeningHttpServer(TEST_PORT + 2)
+      await createListeningHttpServer(TEST_PORT + 2),
     );
     const usedPortRetries = 2;
 
     const serverPromise = safeListeningHttpServer(TEST_PORT, undefined /* requestListener */, usedPortRetries).then(
-      ({ httpServer }) => runningServers.push(httpServer)
+      ({ httpServer }) => runningServers.push(httpServer),
     ); // in case it doesn't fail, register for cleanup
 
     await rejects(serverPromise, {
