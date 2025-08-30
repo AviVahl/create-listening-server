@@ -12,7 +12,7 @@ import { once } from "node:events";
 export async function createListeningHttpServer(
   port: number,
   requestListener?: (request: IncomingMessage, response: ServerResponse) => void,
-  hostname?: string
+  hostname?: string,
 ): Promise<Server> {
   const httpServer = createServer(requestListener);
   httpServer.listen(port, hostname);
