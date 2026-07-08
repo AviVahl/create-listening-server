@@ -11,18 +11,14 @@
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "lint": "eslint",
-    "pretest": "npm run lint && npm run build",
+    "pretest": "npm run build",
     "test": "node --test --enable-source-maps \"src/test/**/*.test.ts\"",
     "prepack": "npm run build"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@types/node": "22",
-    "eslint": "^10.6.0",
     "prettier": "^3.9.4",
-    "typescript": "~6.0.3",
-    "typescript-eslint": "^8.63.0"
+    "typescript": "~6.0.3"
   },
   "files": [
     "dist",
