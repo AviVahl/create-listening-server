@@ -1,6 +1,4 @@
-# create-listening-server
-
-[![npm version](https://badge.fury.io/js/create-listening-server.svg)](https://www.npmjs.com/package/create-listening-server)
+# create-listening-server [![npm version](https://img.shields.io/npm/v/create-listening-server)](https://www.npmjs.com/package/create-listening-server)
 
 Promise-based API to create listening `http.Server` instances.
 
